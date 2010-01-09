@@ -55,6 +55,13 @@ Context といった各クラスにメソッドをはやす、といったこと
 といった形式で使います。Amon::Plugin::PluginName->init($c) が起動時によ
 ばれるので、init メソッドの中に処理を記述してください。
 
+複数のPluginを呼ぶ場合、常にconfを渡す設定になっているため、
+下記のように空白でも渡すようにしましょう
+
+   __PACKAGE__->load_plugins(
+       ( 'PluginName', {} ),
+       ( 'PluginName', { conf => 'foobar' } ),
+   );
 
 =back
 
