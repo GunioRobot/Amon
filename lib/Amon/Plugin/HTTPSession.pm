@@ -34,7 +34,13 @@ sub _load {
     if (ref $stuff) {
         if (ref $stuff eq 'CODE') {
             return $stuff;
-        } else {
+        }
+        elsif ( ref $stuff eq 'ARRAY' ) {
+            my $store_class = Amon::Util::load_class($stuff->[0], $namespace);
+            my $store_obj = $store_class->new( %{ $stuff->[1] } );
+            return sub { $store_obj };
+        }
+        else {
             return sub { $stuff };
         }
     } else {
@@ -55,7 +61,12 @@ Amon::Plugin::HTTPSession - Plugin system for Amon
 
     package MyApp::Web;
     use Amon::Web -base;
-    __PACKAGE__->load_plugins(qw/HTTPSession/);
+    __PACKAGE__->load_plugins( 'HTTPSession', 
+        {
+            state => [ 'Cookie', { cookie_key => 'foobar' } ],
+            store => [ 'File',   { dir        => '/tmp/' }  ],
+        }
+    );
 
     package MyApp::C::Root;
     use Amon::Web::C;
