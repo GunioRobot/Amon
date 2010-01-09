@@ -59,8 +59,8 @@ Context といった各クラスにメソッドをはやす、といったこと
 下記のように空白でも渡すようにしましょう
 
    __PACKAGE__->load_plugins(
-       ( 'PluginName', {} ),
-       ( 'PluginName', { conf => 'foobar' } ),
+       'PluginName'  => {},
+       'PluginName2' => { conf => 'foobar' },
    );
 
 =back

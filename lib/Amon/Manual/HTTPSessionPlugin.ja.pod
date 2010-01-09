@@ -17,10 +17,10 @@ L<Amon::Plugin::HTTPSession> をロードしましょう。
         default_view_class => 'MT',
     );
     __PACKAGE__->load_plugins(
-         'HTTPSession', {
-             state => [ 'Cookie', { cookie_key => 'foobar' } ]
+         'HTTPSession' => {
+             state => [ 'Cookie', { cookie_key => 'foobar' } ],
              store => [ 'File',   { dir        => '/path/to/dir' } ]
-         }
+         },
     );
     1;
 
