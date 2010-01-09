@@ -1,0 +1,51 @@
+=head1 NAME
+
+Amon::Manual::HTTPSessionPlugin.ja - Amon でSessionを使う
+
+=head1 DESCRIPTION
+
+Amon に同梱されているHTTPSessionプラグインで簡単にHTTPSession対応
+
+=head1 HOW TO ADD HTTP Session SUPPORT
+
+=head2 Pluginのロード
+
+L<Amon::Plugin::HTTPSession> をロードしましょう。
+
+    package MyApp::Web;
+    use Amon::Web -base => (
+        default_view_class => 'MT',
+    );
+    __PACKAGE__->load_plugins(
+         'HTTPSession', {
+             state => [ 'Cookie', { cookie_key => 'foobar' } ]
+             store => [ 'File',   { dir        => '/path/to/dir' } ]
+         }
+    );
+    1;
+
+stateはL<HTTP::Session::State>, storeはL<HTTP::Session::Store>の機能を使用しています。
+
+配列リファレンスの1つ目の引数はHTTP::Session::State::*の名前を指定します。(storeの場合はHTTP::Session::Store::*)
+2つ目の引数は使用するモジュールをnewする時の引数です。
+
+必要な引数については、HTTP::Session::State::*,HTTP::Session::Store::*の各ドキュメントを
+参照してください。
+
+=head2 Controllerでの使用方法
+
+L<Amon::Plugin::HTTPSession>のpodにも記載されていますが、下記のように使用します。
+
+    package MyApp::C::Root;
+    use Amon::Web::C;
+    sub index {
+        my $foo = c->session->get('foo');
+        if ($foo) {
+              c->session->set('foo' => $foo+1);
+        } else {
+              c->session->set('foo' => 1);
+        }
+    }
+
+=cut
+
