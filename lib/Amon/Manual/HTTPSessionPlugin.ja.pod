@@ -6,9 +6,9 @@ Amon::Manual::HTTPSessionPlugin.ja - Amon でSessionを使う
 
 Amon に同梱されているHTTPSessionプラグインで簡単にHTTPSession対応
 
-=head1 HOW TO ADD HTTP Session SUPPORT
+=head1 HOW TO ADD SESSION SUPPORT
 
-=head2 Pluginのロード
+=head2 プラグインのロード
 
 L<Amon::Plugin::HTTPSession> をロードしましょう。
 
@@ -26,10 +26,10 @@ L<Amon::Plugin::HTTPSession> をロードしましょう。
 
 stateはL<HTTP::Session::State>, storeはL<HTTP::Session::Store>の機能を使用しています。
 
-配列リファレンスの1つ目の引数はHTTP::Session::State::*の名前を指定します。(storeの場合はHTTP::Session::Store::*)
+配列リファレンスの1つ目の引数はL<HTTP::Session::State::*>の名前を指定します。(storeの場合はL<HTTP::Session::Store::*>)
 2つ目の引数は使用するモジュールをnewする時の引数です。
 
-必要な引数については、HTTP::Session::State::*,HTTP::Session::Store::*の各ドキュメントを
+必要な引数については、L<HTTP::Session::State::*>,L<HTTP::Session::Store::*>の各ドキュメントを
 参照してください。
 
 =head2 Controllerでの使用方法
