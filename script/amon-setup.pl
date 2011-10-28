@@ -77,8 +77,8 @@ sub index {
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title><? block title => 'Amon' ?></title>
-    <meta http-equiv="Content-Style-Type" content="text/css" />  
-    <meta http-equiv="Content-Script-Type" content="text/javascript" />  
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <link href="<?= uri_for('/static/css/main.css') ?>" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
